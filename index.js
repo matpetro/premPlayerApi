@@ -74,7 +74,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/players', (req, res) => {
-    res.json(players)  // give a response to the webpage of the current array of players
+    let playersFiltered = [...players];
+    if (req.query.team !== undefined){
+        playersFiltered = playersFiltered.filter(player => player.team.replace(/\s/g, "").toLowerCase() === req.query.team.replace(/\s/g, "").toLowerCase());
+    }
+    if (req.query.nation !== undefined){
+        playersFiltered = playersFiltered.filter(player => player.nation.replace(/\s/g, "").toLowerCase() === req.query.nation.replace(/\s/g, "").toLowerCase());
+    }
+    res.json(playersFiltered)  // give a response to the webpage of the current array of players
 })
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
