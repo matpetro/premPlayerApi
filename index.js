@@ -6,7 +6,7 @@ const { response } = require("express")
 
 const app = express()
 
-const url = 'https://www.worldfootball.net/players_list/eng-premier-league-2023-2024/nach-name/'
+const url = 'https://www.worldfootball.net/players_list/eng-premier-league-2024-2025/nach-name/'
 const urlPlayer = 'https://www.worldfootball.net'
 
 function getAge(dateString) {
